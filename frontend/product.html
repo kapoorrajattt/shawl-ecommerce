@@ -1,0 +1,1658 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="pageTitle">Product — Kullu Valley Handloom</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* ── Product Page Specific Styles ── */
+      .breadcrumb {
+        padding: 14px 40px;
+        font-family: "Lato", sans-serif;
+        font-size: 0.75rem;
+        letter-spacing: 1.5px;
+        color: rgba(61, 21, 8, 0.5);
+        border-bottom: 1px solid rgba(139, 37, 0, 0.1);
+        text-transform: uppercase;
+      }
+      .breadcrumb a {
+        color: var(--rust);
+        text-decoration: none;
+      }
+      .breadcrumb a:hover {
+        text-decoration: underline;
+      }
+      .breadcrumb span {
+        margin: 0 8px;
+      }
+
+      .product-page {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 48px 24px 80px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: start;
+      }
+
+      /* ── Image Section ── */
+      .product-images {
+        position: sticky;
+        top: 20px;
+      }
+
+      .main-img-wrap {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 3/4;
+        border: 1.5px solid rgba(139, 37, 0, 0.2);
+        border-radius: 4px;
+        overflow: hidden;
+        background: linear-gradient(160deg, #8b4020, #3d1a08);
+        margin-bottom: 14px;
+      }
+      .main-img-wrap .corner-tl,
+      .main-img-wrap .corner-tr,
+      .main-img-wrap .corner-bl,
+      .main-img-wrap .corner-br {
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        border-color: var(--gold, #e8b84b);
+        border-style: solid;
+        z-index: 2;
+      }
+      .main-img-wrap .corner-tl {
+        top: 8px;
+        left: 8px;
+        border-width: 2px 0 0 2px;
+      }
+      .main-img-wrap .corner-tr {
+        top: 8px;
+        right: 8px;
+        border-width: 2px 2px 0 0;
+      }
+      .main-img-wrap .corner-bl {
+        bottom: 8px;
+        left: 8px;
+        border-width: 0 0 2px 2px;
+      }
+      .main-img-wrap .corner-br {
+        bottom: 8px;
+        right: 8px;
+        border-width: 0 2px 2px 0;
+      }
+
+      #mainProductImg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s ease;
+      }
+      .main-img-wrap:hover #mainProductImg {
+        transform: scale(1.03);
+      }
+
+      .img-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(160deg, #8b4020, #3d1a08);
+      }
+
+      .thumb-row {
+        display: flex;
+        gap: 10px;
+      }
+      .thumb {
+        width: 72px;
+        height: 90px;
+        border: 1.5px solid rgba(139, 37, 0, 0.2);
+        border-radius: 3px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: border-color 0.2s;
+        background: linear-gradient(160deg, #7a3010, #3d1508);
+        flex-shrink: 0;
+      }
+      .thumb.active {
+        border-color: var(--rust, #8b2500);
+      }
+      .thumb:hover {
+        border-color: var(--rust, #8b2500);
+      }
+      .thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* ── Product Info ── */
+      .product-info-panel {
+        padding-top: 8px;
+      }
+
+      .prod-page-badge {
+        display: inline-block;
+        background: var(--rust, #8b2500);
+        color: #f7edd8;
+        font-family: "Lato", sans-serif;
+        font-size: 0.65rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding: 4px 12px;
+        border-radius: 2px;
+        margin-bottom: 14px;
+      }
+
+      .prod-page-cat {
+        font-family: "Lato", sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--rust, #8b2500);
+        margin-bottom: 10px;
+      }
+
+      .prod-page-name {
+        font-family: "Cinzel", serif;
+        font-size: 1.9rem;
+        font-weight: 600;
+        color: #2a0e04;
+        line-height: 1.25;
+        margin-bottom: 16px;
+      }
+
+      .prod-page-divider {
+        height: 1px;
+        background: linear-gradient(90deg, var(--rust, #8b2500), transparent);
+        margin-bottom: 20px;
+        opacity: 0.3;
+      }
+
+      .prod-page-price-row {
+        display: flex;
+        align-items: baseline;
+        gap: 14px;
+        margin-bottom: 8px;
+      }
+      .prod-page-price {
+        font-family: "Cinzel", serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--rust, #8b2500);
+      }
+      .prod-page-old {
+        font-family: "Lato", sans-serif;
+        font-size: 1rem;
+        color: #999;
+        text-decoration: line-through;
+      }
+      .prod-page-saving {
+        font-family: "Lato", sans-serif;
+        font-size: 0.75rem;
+        color: #2e7d32;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+
+      .prod-page-desc {
+        font-family: "Crimson Text", serif;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: rgba(42, 14, 4, 0.75);
+        margin: 20px 0 24px;
+      }
+
+      /* Qty selector */
+      .qty-section {
+        margin-bottom: 24px;
+      }
+      .qty-label {
+        font-family: "Lato", sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(42, 14, 4, 0.5);
+        margin-bottom: 10px;
+      }
+      .qty-controls {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        width: fit-content;
+        border: 1.5px solid rgba(139, 37, 0, 0.25);
+        border-radius: 3px;
+        overflow: hidden;
+      }
+      .qty-controls button {
+        width: 40px;
+        height: 40px;
+        background: transparent;
+        border: none;
+        font-size: 1.2rem;
+        color: var(--rust, #8b2500);
+        cursor: pointer;
+        transition: background 0.2s;
+        font-family: "Lato", sans-serif;
+      }
+      .qty-controls button:hover {
+        background: rgba(139, 37, 0, 0.08);
+      }
+      .qty-controls span {
+        width: 44px;
+        text-align: center;
+        font-family: "Cinzel", serif;
+        font-size: 1rem;
+        color: #2a0e04;
+        border-left: 1px solid rgba(139, 37, 0, 0.2);
+        border-right: 1px solid rgba(139, 37, 0, 0.2);
+        line-height: 40px;
+      }
+
+      /* CTA buttons */
+      .cta-row {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+      .btn-add-cart-main {
+        flex: 1;
+        background: var(--rust, #8b2500);
+        color: #f7edd8;
+        border: none;
+        padding: 15px 24px;
+        font-family: "Cinzel", serif;
+        font-size: 0.8rem;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        border-radius: 3px;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+      }
+      .btn-add-cart-main:hover {
+        background: #6b1c00;
+        transform: translateY(-1px);
+      }
+      .btn-wishlist {
+        width: 50px;
+        background: transparent;
+        border: 1.5px solid rgba(139, 37, 0, 0.3);
+        border-radius: 3px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--rust, #8b2500);
+        transition: background 0.2s;
+      }
+      .btn-wishlist:hover {
+        background: rgba(139, 37, 0, 0.06);
+      }
+
+      /* Features */
+      .prod-features {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 28px;
+      }
+      .feat-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: "Crimson Text", serif;
+        font-size: 0.95rem;
+        color: rgba(42, 14, 4, 0.7);
+      }
+      .feat-icon {
+        width: 28px;
+        height: 28px;
+        background: rgba(139, 37, 0, 0.08);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        flex-shrink: 0;
+      }
+
+      /* Info accordion */
+      .info-accordion {
+        border-top: 1px solid rgba(139, 37, 0, 0.15);
+      }
+      .accordion-item {
+        border-bottom: 1px solid rgba(139, 37, 0, 0.15);
+      }
+      .accordion-btn {
+        width: 100%;
+        background: none;
+        border: none;
+        padding: 14px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        font-family: "Cinzel", serif;
+        font-size: 0.78rem;
+        letter-spacing: 1.5px;
+        color: #2a0e04;
+        text-transform: uppercase;
+      }
+      .accordion-btn span {
+        font-size: 1rem;
+        transition: transform 0.3s;
+      }
+      .accordion-btn.open span {
+        transform: rotate(45deg);
+      }
+      .accordion-content {
+        display: none;
+        font-family: "Crimson Text", serif;
+        font-size: 1rem;
+        line-height: 1.75;
+        color: rgba(42, 14, 4, 0.7);
+        padding-bottom: 14px;
+      }
+      .accordion-content.open {
+        display: block;
+      }
+
+      /* Kullu border reuse */
+      .k-border-sm {
+        height: 6px;
+        background: repeating-linear-gradient(
+          90deg,
+          #8b2500 0 8px,
+          #a83000 8px 16px,
+          #c4530a 16px 22px,
+          #c8900a 22px 28px,
+          #e8b84b 28px 32px,
+          #c8900a 32px 36px,
+          #c4530a 36px 42px,
+          #a83000 42px 50px,
+          #8b2500 50px 58px,
+          #1a4a1a 58px 66px,
+          #2d6b2d 66px 70px,
+          #1a4a1a 70px 78px
+        );
+        margin: 40px 0;
+      }
+
+      /* Related products */
+      .related-section {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 24px 80px;
+      }
+      .related-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 24px;
+        margin-top: 28px;
+      }
+
+      /* Stock indicator */
+      .stock-indicator {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-family: "Lato", sans-serif;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+      }
+      .stock-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #4caf50;
+      }
+      .stock-dot.low {
+        background: #ff9800;
+      }
+      .stock-dot.out {
+        background: #f44336;
+      }
+
+      @media (max-width: 768px) {
+        .product-page {
+          grid-template-columns: 1fr;
+          gap: 32px;
+          padding: 24px 16px 60px;
+        }
+        .product-images {
+          position: static;
+        }
+        .prod-page-name {
+          font-size: 1.5rem;
+        }
+        .prod-features {
+          grid-template-columns: 1fr;
+        }
+        .breadcrumb {
+          padding: 12px 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ── TOP BAR ── -->
+    <div class="top-bar">
+      ✦ &nbsp; Free Shipping on Orders Above ₹999 &nbsp; | &nbsp; Authentic
+      Handloom · Certified Artisans · Himachal Pradesh &nbsp; ✦
+    </div>
+
+    <!-- ── HEADER ── -->
+    <header class="site-header">
+      <div class="header-main">
+        <div style="width: 130px"></div>
+        <a href="index.html" class="logo">
+          <svg
+            class="logo-svg"
+            viewBox="0 0 100 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polygon points="72,10 96,50 48,50" fill="#C4530A" opacity="0.65" />
+            <polygon points="24,20 50,52 -2,52" fill="#5C1A00" opacity="0.8" />
+            <polygon points="50,4 78,50 22,50" fill="#8B2500" />
+            <polygon points="50,4 59,22 41,22" fill="#F7EDD8" opacity="0.88" />
+            <circle cx="84" cy="16" r="5" fill="#C8900A" />
+            <circle cx="84" cy="16" r="2.5" fill="#E8B84B" />
+            <rect x="43" y="50" width="14" height="10" fill="#C8900A" rx="1" />
+            <polygon points="42,50 50,43 58,50" fill="#5C1A00" />
+            <rect
+              x="46"
+              y="53"
+              width="3"
+              height="4"
+              fill="#F7EDD8"
+              opacity="0.6"
+            />
+            <rect
+              x="51"
+              y="53"
+              width="3"
+              height="4"
+              fill="#F7EDD8"
+              opacity="0.6"
+            />
+          </svg>
+          <div class="logo-name">Kullu Valley</div>
+          <div class="logo-tag">&#9670; Handloom &#9670;</div>
+        </a>
+        <div class="header-icons">
+          <button class="h-icon" onclick="toggleSearch()" title="Search">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <circle cx="11" cy="11" r="7.5" />
+              <path d="m21 21-4.35-4.35" />
+            </svg>
+          </button>
+          <button
+            class="h-icon"
+            id="accountBtn"
+            onclick="handleAccountClick()"
+            title="My Account"
+            style="position: relative"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+            <span
+              id="accountDot"
+              style="
+                display: none;
+                position: absolute;
+                top: 4px;
+                right: 4px;
+                width: 7px;
+                height: 7px;
+                border-radius: 50%;
+                background: #4caf50;
+              "
+            ></span>
+          </button>
+          <button class="h-icon" onclick="openCart()" title="Cart">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <path d="M16 10a4 4 0 0 1-8 0" />
+            </svg>
+            <span class="cart-badge" id="cartBadge">0</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Kullu border -->
+      <div
+        class="k-border"
+        style="
+          height: 11px;
+          background: repeating-linear-gradient(
+            90deg,
+            #8b2500 0 8px,
+            #a83000 8px 16px,
+            #c4530a 16px 22px,
+            #c8900a 22px 28px,
+            #e8b84b 28px 32px,
+            #c8900a 32px 36px,
+            #c4530a 36px 42px,
+            #a83000 42px 50px,
+            #8b2500 50px 58px,
+            #1a4a1a 58px 66px,
+            #2d6b2d 66px 70px,
+            #1a4a1a 70px 78px
+          );
+        "
+      ></div>
+
+      <nav class="main-nav">
+        <a href="index.html" class="nav-a">Home</a>
+        <a href="index.html#categories" class="nav-a active"
+          >Authentic Shawls</a
+        >
+        <a href="index.html#our-tradition" class="nav-a">Our Tradition</a>
+        <a href="index.html#weaving-art" class="nav-a">Weaving Art</a>
+        <a href="index.html#about" class="nav-a">About</a>
+        <a href="index.html#contact" class="nav-a">Contact</a>
+      </nav>
+
+      <div
+        class="k-border"
+        style="
+          height: 11px;
+          background: repeating-linear-gradient(
+            90deg,
+            #8b2500 0 8px,
+            #a83000 8px 16px,
+            #c4530a 16px 22px,
+            #c8900a 22px 28px,
+            #e8b84b 28px 32px,
+            #c8900a 32px 36px,
+            #c4530a 36px 42px,
+            #a83000 42px 50px,
+            #8b2500 50px 58px,
+            #1a4a1a 58px 66px,
+            #2d6b2d 66px 70px,
+            #1a4a1a 70px 78px
+          );
+        "
+      ></div>
+
+      <div class="search-wrap" id="searchWrap">
+        <div class="search-row">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search shawls, pattus, caps, woolens…"
+          />
+          <button onclick="doSearch()">Search</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ── BREADCRUMB ── -->
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <a href="index.html#all-products">Collection</a>
+      <span>›</span>
+      <span id="breadcrumbName">Product</span>
+    </div>
+
+    <!-- ── MAIN PRODUCT SECTION ── -->
+    <div class="product-page">
+      <!-- LEFT: Images -->
+      <div class="product-images">
+        <div class="main-img-wrap">
+          <div class="corner-tl"></div>
+          <div class="corner-tr"></div>
+          <div class="corner-bl"></div>
+          <div class="corner-br"></div>
+          <div class="img-placeholder" id="imgPlaceholder">
+            <svg width="80" height="80" viewBox="0 0 60 60" opacity="0.2">
+              <path
+                d="M10 50 Q30 10 50 50"
+                stroke="#F7EDD8"
+                fill="none"
+                stroke-width="2"
+              />
+              <path
+                d="M15 50 Q30 20 45 50"
+                stroke="#F7EDD8"
+                fill="none"
+                stroke-width="1.5"
+              />
+            </svg>
+          </div>
+          <img
+            id="mainProductImg"
+            src=""
+            alt=""
+            style="display: none; width: 100%; height: 100%; object-fit: cover"
+          />
+        </div>
+
+        <!-- Thumbnail row -->
+        <div class="thumb-row" id="thumbRow">
+          <div class="thumb active" onclick="selectThumb(this, '')">
+            <div
+              style="
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(160deg, #8b4020, #3d1a08);
+              "
+            ></div>
+          </div>
+          <div class="thumb" onclick="selectThumb(this, '')">
+            <div
+              style="
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(160deg, #7a3010, #2d0d05);
+              "
+            ></div>
+          </div>
+          <div class="thumb" onclick="selectThumb(this, '')">
+            <div
+              style="
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(160deg, #6b2510, #200c04);
+              "
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Info -->
+      <div class="product-info-panel">
+        <div class="prod-page-badge" id="prodBadge">Bestseller</div>
+        <p class="prod-page-cat" id="prodCat">Kulluvi Handloom</p>
+        <h1 class="prod-page-name" id="prodName">Loading…</h1>
+        <div class="prod-page-divider"></div>
+
+        <div class="prod-page-price-row">
+          <span class="prod-page-price" id="prodPrice">₹0</span>
+          <span class="prod-page-old" id="prodOld"></span>
+        </div>
+        <div class="prod-page-saving" id="prodSaving"></div>
+
+        <!-- Stock -->
+        <div class="stock-indicator" style="margin-top: 10px">
+          <div class="stock-dot" id="stockDot"></div>
+          <span
+            id="stockText"
+            style="
+              font-family: &quot;Lato&quot;, sans-serif;
+              font-size: 0.75rem;
+              letter-spacing: 1px;
+              color: rgba(42, 14, 4, 0.6);
+            "
+            >In Stock</span
+          >
+        </div>
+
+        <p class="prod-page-desc" id="prodDesc">
+          Handcrafted in the valleys of Kullu by master weavers. Pure Himachali
+          wool, natural dyes, and generations of artisan skill woven into every
+          thread.
+        </p>
+
+        <!-- Quantity -->
+        <div class="qty-section">
+          <div class="qty-label">Quantity</div>
+          <div class="qty-controls">
+            <button onclick="changePageQty(-1)">−</button>
+            <span id="pageQty">1</span>
+            <button onclick="changePageQty(1)">+</button>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-row">
+          <button
+            class="btn-add-cart-main"
+            id="addCartBtn"
+            onclick="addProductToCart()"
+          >
+            Add to Cart
+          </button>
+          <button class="btn-wishlist" title="Save for later">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <path
+                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Features -->
+        <div class="prod-features">
+          <div class="feat-item">
+            <div class="feat-icon">🐑</div>
+            Pure Himachali Wool
+          </div>
+          <div class="feat-item">
+            <div class="feat-icon">🎨</div>
+            Natural Dyes
+          </div>
+          <div class="feat-item">
+            <div class="feat-icon">🤝</div>
+            Artisan Made
+          </div>
+          <div class="feat-item">
+            <div class="feat-icon">📦</div>
+            Free Shipping ₹999+
+          </div>
+          <div class="feat-item">
+            <div class="feat-icon">↩️</div>
+            7-Day Returns
+          </div>
+          <div class="feat-item">
+            <div class="feat-icon">✅</div>
+            GI Tagged
+          </div>
+        </div>
+
+        <!-- Accordion -->
+        <div class="info-accordion">
+          <div class="accordion-item">
+            <button class="accordion-btn" onclick="toggleAccordion(this)">
+              Product Details <span>+</span>
+            </button>
+            <div class="accordion-content">
+              <p>• Material: 100% Pure Himachali Wool</p>
+              <p>• Technique: Traditional pit loom hand weaving</p>
+              <p>• Dyes: Natural plant-based dyes</p>
+              <p>• Dimensions: Approx 200cm × 100cm</p>
+              <p>• Weight: 400–500g</p>
+              <p>• Origin: Kullu Valley, Himachal Pradesh</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-btn" onclick="toggleAccordion(this)">
+              Care Instructions <span>+</span>
+            </button>
+            <div class="accordion-content">
+              <p>• Dry clean recommended for best results</p>
+              <p>• Hand wash in cold water with mild detergent</p>
+              <p>• Do not wring or tumble dry</p>
+              <p>• Dry flat in shade</p>
+              <p>• Store folded in a cool, dry place</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-btn" onclick="toggleAccordion(this)">
+              Shipping & Returns <span>+</span>
+            </button>
+            <div class="accordion-content">
+              <p>• Free shipping on orders above ₹999</p>
+              <p>• Delivered within 5–7 business days</p>
+              <p>• 7-day hassle-free return policy</p>
+              <p>• Items must be unwashed and unused</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── WHY CHOOSE US ── -->
+    <div style="max-width: 1100px; margin: 0 auto; padding: 0 24px">
+      <div class="k-border-sm"></div>
+    </div>
+
+    <div style="max-width: 1100px; margin: 0 auto; padding: 0 24px 80px">
+      <div
+        class="section-head reveal"
+        style="text-align: center; margin-bottom: 36px"
+      >
+        <span class="section-eyebrow">Our Promise</span>
+        <h2>Why Choose Kullu Valley</h2>
+        <div class="ornament"><div class="ornament-diamond"></div></div>
+      </div>
+
+      <div
+        style="
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+          gap: 24px;
+        "
+      >
+        <div
+          class="reveal"
+          style="
+            text-align: center;
+            padding: 36px 24px;
+            border: 1px solid rgba(139, 37, 0, 0.15);
+            border-radius: 6px;
+            background: rgba(139, 37, 0, 0.03);
+          "
+        >
+          <div style="font-size: 2.4rem; margin-bottom: 14px">🏅</div>
+          <h3
+            style="
+              font-family: &quot;Cinzel&quot;, serif;
+              font-size: 0.85rem;
+              letter-spacing: 2px;
+              color: var(--rust, #8b2500);
+              margin-bottom: 10px;
+            "
+          >
+            GI TAGGED
+          </h3>
+          <p
+            style="
+              font-family: &quot;Crimson Text&quot;, serif;
+              font-size: 1.05rem;
+              line-height: 1.7;
+              color: rgba(42, 14, 4, 0.7);
+            "
+          >
+            Every shawl carries the Government of India's Geographical
+            Indication tag — your guarantee of authentic Kullu valley origin.
+          </p>
+        </div>
+
+        <div
+          class="reveal"
+          style="
+            text-align: center;
+            padding: 36px 24px;
+            border: 1px solid rgba(139, 37, 0, 0.15);
+            border-radius: 6px;
+            background: rgba(139, 37, 0, 0.03);
+          "
+        >
+          <div style="font-size: 2.4rem; margin-bottom: 14px">🚚</div>
+          <h3
+            style="
+              font-family: &quot;Cinzel&quot;, serif;
+              font-size: 0.85rem;
+              letter-spacing: 2px;
+              color: var(--rust, #8b2500);
+              margin-bottom: 10px;
+            "
+          >
+            FREE SHIPPING
+          </h3>
+          <p
+            style="
+              font-family: &quot;Crimson Text&quot;, serif;
+              font-size: 1.05rem;
+              line-height: 1.7;
+              color: rgba(42, 14, 4, 0.7);
+            "
+          >
+            Free delivery across India on all orders above ₹999. Carefully
+            packed and shipped within 2 business days.
+          </p>
+        </div>
+
+        <div
+          class="reveal"
+          style="
+            text-align: center;
+            padding: 36px 24px;
+            border: 1px solid rgba(139, 37, 0, 0.15);
+            border-radius: 6px;
+            background: rgba(139, 37, 0, 0.03);
+          "
+        >
+          <div style="font-size: 2.4rem; margin-bottom: 14px">🤝</div>
+          <h3
+            style="
+              font-family: &quot;Cinzel&quot;, serif;
+              font-size: 0.85rem;
+              letter-spacing: 2px;
+              color: var(--rust, #8b2500);
+              margin-bottom: 10px;
+            "
+          >
+            ARTISAN MADE
+          </h3>
+          <p
+            style="
+              font-family: &quot;Crimson Text&quot;, serif;
+              font-size: 1.05rem;
+              line-height: 1.7;
+              color: rgba(42, 14, 4, 0.7);
+            "
+          >
+            Handwoven by 200+ certified artisans from Kullu, Kinnaur and
+            Lahaul-Spiti. Every purchase directly supports a mountain family.
+          </p>
+        </div>
+
+        <div
+          class="reveal"
+          style="
+            text-align: center;
+            padding: 36px 24px;
+            border: 1px solid rgba(139, 37, 0, 0.15);
+            border-radius: 6px;
+            background: rgba(139, 37, 0, 0.03);
+          "
+        >
+          <div style="font-size: 2.4rem; margin-bottom: 14px">↩️</div>
+          <h3
+            style="
+              font-family: &quot;Cinzel&quot;, serif;
+              font-size: 0.85rem;
+              letter-spacing: 2px;
+              color: var(--rust, #8b2500);
+              margin-bottom: 10px;
+            "
+          >
+            7-DAY RETURNS
+          </h3>
+          <p
+            style="
+              font-family: &quot;Crimson Text&quot;, serif;
+              font-size: 1.05rem;
+              line-height: 1.7;
+              color: rgba(42, 14, 4, 0.7);
+            "
+          >
+            Not satisfied? Return within 7 days, no questions asked. We want
+            every customer to love what they receive.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- ── CART PANEL ── -->
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+    <div class="cart-panel" id="cartPanel">
+      <div class="cart-panel-head">
+        <h3>Your Cart</h3>
+        <button class="cart-close" onclick="closeCart()">✕</button>
+      </div>
+      <div class="cart-items-list" id="cartList">
+        <div class="cart-empty">
+          Your cart is empty.<br />Add some mountain warmth!
+        </div>
+      </div>
+      <div class="cart-panel-foot">
+        <div class="cart-total-row">
+          <span>Total</span>
+          <span id="cartTotal">₹0</span>
+        </div>
+        <button class="checkout-btn" onclick="checkout()">
+          Proceed to Checkout →
+        </button>
+      </div>
+    </div>
+
+    <!-- ── AUTH MODAL ── -->
+    <div
+      id="authOverlay"
+      onclick="closeAuthModal()"
+      style="
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1000;
+        backdrop-filter: blur(3px);
+      "
+    ></div>
+    <div
+      id="authModal"
+      style="
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1001;
+        width: 92%;
+        max-width: 420px;
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      "
+    >
+      <div
+        style="
+          background: var(--rust, #8b2500);
+          padding: 20px 24px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <div style="display: flex">
+          <button
+            id="tabLoginBtn"
+            onclick="switchAuthTab('login')"
+            style="
+              background: rgba(255, 255, 255, 0.2);
+              color: #f7edd8;
+              border: none;
+              padding: 8px 20px;
+              font-family: &quot;Cinzel&quot;, serif;
+              font-size: 0.75rem;
+              letter-spacing: 1.5px;
+              cursor: pointer;
+              border-radius: 3px 0 0 3px;
+            "
+          >
+            LOGIN
+          </button>
+          <button
+            id="tabRegisterBtn"
+            onclick="switchAuthTab('register')"
+            style="
+              background: transparent;
+              color: rgba(247, 237, 216, 0.6);
+              border: none;
+              padding: 8px 20px;
+              font-family: &quot;Cinzel&quot;, serif;
+              font-size: 0.75rem;
+              letter-spacing: 1.5px;
+              cursor: pointer;
+              border-radius: 0 3px 3px 0;
+            "
+          >
+            REGISTER
+          </button>
+        </div>
+        <button
+          onclick="closeAuthModal()"
+          style="
+            background: none;
+            border: none;
+            color: #f7edd8;
+            font-size: 1.3rem;
+            cursor: pointer;
+          "
+        >
+          ✕
+        </button>
+      </div>
+      <div id="loginForm" style="padding: 28px 24px">
+        <input
+          id="loginEmail"
+          type="email"
+          placeholder="Email address"
+          style="
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 12px 14px;
+            font-family: &quot;Crimson Text&quot;, serif;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            outline: none;
+          "
+        />
+        <input
+          id="loginPassword"
+          type="password"
+          placeholder="Password"
+          style="
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 12px 14px;
+            font-family: &quot;Crimson Text&quot;, serif;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            outline: none;
+          "
+        />
+        <button
+          onclick="handleLoginSubmit()"
+          style="
+            width: 100%;
+            background: var(--rust, #8b2500);
+            color: #f7edd8;
+            border: none;
+            padding: 13px;
+            font-family: &quot;Cinzel&quot;, serif;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            cursor: pointer;
+          "
+        >
+          LOGIN
+        </button>
+        <p
+          style="
+            text-align: center;
+            margin-top: 16px;
+            font-family: &quot;Crimson Text&quot;, serif;
+            font-size: 0.95rem;
+            color: #888;
+          "
+        >
+          No account?
+          <a
+            onclick="switchAuthTab('register')"
+            style="
+              color: var(--rust, #8b2500);
+              cursor: pointer;
+              text-decoration: underline;
+            "
+            >Register here</a
+          >
+        </p>
+      </div>
+      <div id="registerForm" style="display: none; padding: 28px 24px">
+        <input
+          id="regName"
+          type="text"
+          placeholder="Full name"
+          style="
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 12px 14px;
+            font-family: &quot;Crimson Text&quot;, serif;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            outline: none;
+          "
+        />
+        <input
+          id="regEmail"
+          type="email"
+          placeholder="Email address"
+          style="
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 12px 14px;
+            font-family: &quot;Crimson Text&quot;, serif;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            outline: none;
+          "
+        />
+        <input
+          id="regPassword"
+          type="password"
+          placeholder="Password (min 6 characters)"
+          style="
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 12px 14px;
+            font-family: &quot;Crimson Text&quot;, serif;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            outline: none;
+          "
+        />
+        <button
+          onclick="handleRegisterSubmit()"
+          style="
+            width: 100%;
+            background: var(--rust, #8b2500);
+            color: #f7edd8;
+            border: none;
+            padding: 13px;
+            font-family: &quot;Cinzel&quot;, serif;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            cursor: pointer;
+          "
+        >
+          CREATE ACCOUNT
+        </button>
+        <p
+          style="
+            text-align: center;
+            margin-top: 16px;
+            font-family: &quot;Crimson Text&quot;, serif;
+            font-size: 0.95rem;
+            color: #888;
+          "
+        >
+          Have an account?
+          <a
+            onclick="switchAuthTab('login')"
+            style="
+              color: var(--rust, #8b2500);
+              cursor: pointer;
+              text-decoration: underline;
+            "
+            >Login here</a
+          >
+        </p>
+      </div>
+      <div
+        id="loggedInPanel"
+        style="display: none; padding: 28px 24px; text-align: center"
+      >
+        <div
+          style="
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--rust, #8b2500);
+            color: #f7edd8;
+            font-family: &quot;Cinzel&quot;, serif;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 14px;
+          "
+          id="avatarInitial"
+        >
+          ?
+        </div>
+        <h3
+          id="profileGreet"
+          style="
+            font-family: &quot;Cinzel&quot;, serif;
+            font-size: 1rem;
+            color: var(--rust, #8b2500);
+            margin-bottom: 4px;
+          "
+        ></h3>
+        <p
+          id="profileEmailDisplay"
+          style="
+            font-family: &quot;Crimson Text&quot;, serif;
+            font-size: 0.95rem;
+            color: #888;
+            margin-bottom: 24px;
+          "
+        ></p>
+        <button
+          onclick="logout()"
+          style="
+            width: 100%;
+            background: transparent;
+            border: 1.5px solid var(--rust, #8b2500);
+            color: var(--rust, #8b2500);
+            padding: 12px;
+            font-family: &quot;Cinzel&quot;, serif;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            cursor: pointer;
+          "
+        >
+          LOGOUT
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+      /* ══════════════════════════════
+       PRODUCT PAGE LOGIC
+    ══════════════════════════════ */
+
+      // All products data — keep in sync with index.html
+      const ALL_PRODUCTS = [
+        {
+          name: "Kullu Shawl Classic",
+          price: 4800,
+          old: 11000,
+          cat: "Kullu Shawl — Classic",
+          badge: "Bestseller",
+          desc: "Intricate Pattu border with soft merino wool. A timeless piece woven by master artisans in the Kullu valley using traditional pit loom techniques.",
+          images: [
+            "images/classic1.jpeg",
+            "images/classic2.png",
+            "images/classic3.png",
+          ],
+        },
+        {
+          name: "Angora Pashmina",
+          price: 12500,
+          old: null,
+          cat: "Kulluvi Handloom",
+          badge: "New",
+          desc: "Ultra-soft Angora Pashmina blend. Feather-light yet incredibly warm. The finest shawl in our collection.",
+          images: [
+            "images/angora-pashmina-1.jpg",
+            "images/angora-pashmina-2.jpg",
+            "images/angora-pashmina-3.jpg",
+          ],
+        },
+        {
+          name: "Kinnauri Stole",
+          price: 6200,
+          old: 7800,
+          cat: "Kulluvi Handloom",
+          badge: "Sale",
+          desc: "Elegant Kinnauri stole with fine embroidery in earthy mountain tones. Lightweight and versatile.",
+          images: [
+            "images/kinnauri-stole-1.jpg",
+            "images/kinnauri-stole-2.jpg",
+            "images/kinnauri-stole-3.jpg",
+          ],
+        },
+        {
+          name: "Kullu Shawl Classic",
+          price: 4800,
+          old: null,
+          cat: "Kulluvi Handloom",
+          badge: null,
+          desc: "The classic Kullu shawl — iconic geometric patterns, rich rust and forest tones. A piece of living Himachali heritage.",
+          images: [
+            "images/kullu-classic-1.jpg",
+            "images/kullu-classic-2.jpg",
+            "images/kullu-classic-3.jpg",
+          ],
+        },
+        {
+          name: "Kullu Shawl Royal",
+          price: 9200,
+          old: 11500,
+          cat: "Kulluvi Handloom",
+          badge: "Premium",
+          desc: "Our royal collection shawl with intricate double-border weaving. Pure wool, deep colours, and a regal drape.",
+          images: [
+            "images/royal1.png",
+            "images/royal2.png",
+            "images/royal3.png",
+          ],
+        },
+        {
+          name: "Kinnauri Stole Classic",
+          price: 5600,
+          old: 7200,
+          cat: "Kulluvi Handloom",
+          badge: "Sale",
+          desc: "Kinnauri stole in warm gold and saffron tones. Hand-embroidered border with traditional Kinnauri motifs.",
+          images: [
+            "images/kinnn1.png",
+            "images/kinnn2.png",
+            "images/kinnn3.png",
+          ],
+        },
+        {
+          name: "Kullu Shawl Heritage",
+          price: 7400,
+          old: null,
+          cat: "Kulluvi Handloom",
+          badge: null,
+          desc: "Heritage weave with muted earthy tones — walnut brown, sage green, and deep ochre. Each thread dyed with natural pigments.",
+          images: ["images/heri1.png", "images/heri2.png", "images/heri3.png"],
+        },
+        {
+          name: "Pure Merino Pattu",
+          price: 25000,
+          old: 30000,
+          cat: "Pure Merino Pattu",
+          badge: "Sale",
+          desc: "Bold Pure Merino Pattu with traditional geometric border. The deep red hue comes from natural pomegranate dye.",
+          images: ["images/pure1.png", "images/pure2.png", "images/pure3.png"],
+        },
+        {
+          name: "Kulluvi Caps",
+          price: 1500,
+          old: null,
+          cat: "Kulluvi Handloom",
+          badge: null,
+          desc: "The Kulluvi cap, from Kullu Valley, is a sacred symbol of tradition, worn with respect for local deities (devtas) and cultural pride, handcrafted from fine wool with vibrant woven patterns.",
+          images: ["images/cap1.png", "images/cap2.png", "images/cap3.png"],
+        },
+      ];
+      let pageQty = 1;
+      let currentProduct = null;
+
+      /* Read product name from URL param */
+      function initProductPage() {
+        const params = new URLSearchParams(window.location.search);
+        const name = params.get("name");
+        const price = params.get("price");
+        const old = params.get("old");
+
+        // Find full product data
+        currentProduct = ALL_PRODUCTS.find((p) => p.name === name) || {
+          name: name || "Kullu Shawl",
+          price: Number(price) || 4800,
+          old: old ? Number(old) : null,
+          cat: "Kulluvi Handloom",
+          badge: null,
+          desc: "Handcrafted in the valleys of Kullu by master weavers. Pure Himachali wool, natural dyes, and generations of artisan skill woven into every thread.",
+        };
+
+        // Set page title
+        // Set page title
+        document.title = currentProduct.name;
+        document.getElementById("pageTitle").textContent =
+          currentProduct.name + " — Kullu Valley Handloom";
+        document.getElementById("breadcrumbName").textContent =
+          currentProduct.name;
+
+        // Fill info panel
+        document.getElementById("prodName").textContent = currentProduct.name;
+        document.getElementById("prodCat").textContent = currentProduct.cat;
+        document.getElementById("prodDesc").textContent = currentProduct.desc;
+        // Load images into thumbnails
+        if (currentProduct.images && currentProduct.images.length > 0) {
+          const thumbRow = document.getElementById("thumbRow");
+          thumbRow.innerHTML = currentProduct.images
+            .map(
+              (img, i) => `
+    <div class="thumb ${i === 0 ? "active" : ""}" onclick="selectThumb(this, '${img}')">
+      <img src="${img}" style="width:100%;height:100%;object-fit:cover;" />
+    </div>
+  `,
+            )
+            .join("");
+          // Auto-load first image
+          selectThumb(
+            thumbRow.querySelector(".thumb.active"),
+            currentProduct.images[0],
+          );
+        }
+        document.getElementById("prodPrice").textContent =
+          "₹" + currentProduct.price.toLocaleString("en-IN");
+
+        // Badge
+        const badgeEl = document.getElementById("prodBadge");
+        if (currentProduct.badge) {
+          badgeEl.textContent = currentProduct.badge;
+          badgeEl.style.display = "inline-block";
+        } else {
+          badgeEl.style.display = "none";
+        }
+
+        // Old price & saving
+        if (currentProduct.old) {
+          document.getElementById("prodOld").textContent =
+            "₹" + currentProduct.old.toLocaleString("en-IN");
+          const saving = currentProduct.old - currentProduct.price;
+          const pct = Math.round((saving / currentProduct.old) * 100);
+          document.getElementById("prodSaving").textContent =
+            `You save ₹${saving.toLocaleString("en-IN")} (${pct}% off)`;
+        }
+      }
+
+      function changePageQty(delta) {
+        pageQty = Math.max(1, pageQty + delta);
+        document.getElementById("pageQty").textContent = pageQty;
+      }
+
+      function addProductToCart() {
+        if (!currentProduct) return;
+        for (let i = 0; i < pageQty; i++) {
+          addToCart(currentProduct.name, currentProduct.price, null);
+        }
+      }
+
+      function selectThumb(el, imgSrc) {
+        document
+          .querySelectorAll(".thumb")
+          .forEach((t) => t.classList.remove("active"));
+        el.classList.add("active");
+        const mainImg = document.getElementById("mainProductImg");
+        const placeholder = document.getElementById("imgPlaceholder");
+        if (imgSrc) {
+          mainImg.src = imgSrc;
+          mainImg.style.display = "block";
+          placeholder.style.display = "none";
+        } else {
+          mainImg.style.display = "none";
+          placeholder.style.display = "flex";
+          // Copy the thumb's background to the placeholder
+          const bg = el.querySelector("div")?.style.background;
+          if (bg) placeholder.style.background = bg;
+        }
+      }
+
+      function toggleAccordion(btn) {
+        const content = btn.nextElementSibling;
+        const isOpen = content.classList.contains("open");
+        // Close all
+        document
+          .querySelectorAll(".accordion-content")
+          .forEach((c) => c.classList.remove("open"));
+        document
+          .querySelectorAll(".accordion-btn")
+          .forEach((b) => b.classList.remove("open"));
+        // Open clicked if was closed
+        if (!isOpen) {
+          content.classList.add("open");
+          btn.classList.add("open");
+        }
+      }
+
+      function renderRelated(currentName) {
+        const related = ALL_PRODUCTS.filter(
+          (p) => p.name !== currentName,
+        ).slice(0, 4);
+        const grid = document.getElementById("relatedGrid");
+        const gradients = [
+          "linear-gradient(160deg,#8b4020,#3d1a08)",
+          "linear-gradient(160deg,#7a2a1a,#2d0d05)",
+          "linear-gradient(160deg,#5a3015,#1a0a04)",
+          "linear-gradient(160deg,#8b3018,#3a1008)",
+        ];
+        grid.innerHTML = related
+          .map(
+            (p, i) => `
+        <div class="prod-card" onclick="goToProduct('${p.name}', ${p.price}${p.old ? ", " + p.old : ""})" style="cursor:pointer;">
+          <div class="prod-img-wrap">
+            <div class="corner-tl"></div><div class="corner-tr"></div>
+            <div class="corner-bl"></div><div class="corner-br"></div>
+            <div style="width:100%;height:100%;${gradients[i % gradients.length] ? "background:" + gradients[i % gradients.length] : ""}"></div>
+          </div>
+          <div class="prod-info">
+            <p class="prod-cat">${p.cat}</p>
+            <h3 class="prod-name">${p.name}</h3>
+            <p class="prod-desc">Intricate Pattu Border, Soft Wool</p>
+            <div class="prod-price-row">
+              <span class="prod-price">₹${p.price.toLocaleString("en-IN")}</span>
+              ${p.old ? `<span class="prod-old">₹${p.old.toLocaleString("en-IN")}</span>` : ""}
+            </div>
+            <button class="add-btn" onclick="event.stopPropagation();addToCart('${p.name}',${p.price},null)">Add to Cart</button>
+          </div>
+        </div>
+      `,
+          )
+          .join("");
+      }
+
+      function goToProduct(name, price, old) {
+        let url = `product.html?name=${encodeURIComponent(name)}&price=${price}`;
+        if (old) url += `&old=${old}`;
+        window.location.href = url;
+      }
+
+      /* Auth modal helpers */
+      function openAuthModal(tab) {
+        document.getElementById("authOverlay").style.display = "block";
+        document.getElementById("authModal").style.display = "block";
+        switchAuthTab(tab || "login");
+      }
+      function closeAuthModal() {
+        document.getElementById("authOverlay").style.display = "none";
+        document.getElementById("authModal").style.display = "none";
+      }
+      function switchAuthTab(tab) {
+        document.getElementById("loginForm").style.display =
+          tab === "login" ? "block" : "none";
+        document.getElementById("registerForm").style.display =
+          tab === "register" ? "block" : "none";
+        document.getElementById("loggedInPanel").style.display = "none";
+        document.getElementById("tabLoginBtn").style.background =
+          tab === "login" ? "rgba(255,255,255,0.2)" : "transparent";
+        document.getElementById("tabLoginBtn").style.color =
+          tab === "login" ? "#F7EDD8" : "rgba(247,237,216,0.5)";
+        document.getElementById("tabRegisterBtn").style.background =
+          tab === "register" ? "rgba(255,255,255,0.2)" : "transparent";
+        document.getElementById("tabRegisterBtn").style.color =
+          tab === "register" ? "#F7EDD8" : "rgba(247,237,216,0.5)";
+      }
+      function handleAccountClick() {
+        if (currentUser) {
+          document.getElementById("authOverlay").style.display = "block";
+          document.getElementById("authModal").style.display = "block";
+          document.getElementById("loginForm").style.display = "none";
+          document.getElementById("registerForm").style.display = "none";
+          document.getElementById("loggedInPanel").style.display = "block";
+          document.getElementById("profileGreet").textContent =
+            "Hello, " + currentUser.name + "!";
+          document.getElementById("profileEmailDisplay").textContent =
+            currentUser.email;
+          document.getElementById("avatarInitial").textContent =
+            currentUser.name.charAt(0).toUpperCase();
+        } else {
+          openAuthModal("login");
+        }
+      }
+      function updateAuthUI() {
+        const dot = document.getElementById("accountDot");
+        if (dot) dot.style.display = currentUser ? "block" : "none";
+      }
+
+      /* Init */
+      initProductPage();
+    </script>
+  </body>
+</html>

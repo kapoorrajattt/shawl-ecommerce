@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Confirmed — Kullu Valley Handloom</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .success-page {
+        max-width: 640px;
+        margin: 60px auto;
+        padding: 0 24px 80px;
+        text-align: center;
+      }
+      .success-icon {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #2e7d32, #4caf50);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 24px;
+        font-size: 2.5rem;
+        box-shadow: 0 8px 24px rgba(76, 175, 80, 0.3);
+      }
+      .success-title {
+        font-family: "Cinzel", serif;
+        font-size: 1.8rem;
+        color: #2a0e04;
+        margin-bottom: 12px;
+      }
+      .success-sub {
+        font-family: "Crimson Text", serif;
+        font-size: 1.15rem;
+        color: rgba(42, 14, 4, 0.65);
+        line-height: 1.7;
+        margin-bottom: 32px;
+      }
+      .order-box {
+        border: 1px solid rgba(139, 37, 0, 0.15);
+        border-radius: 6px;
+        overflow: hidden;
+        margin-bottom: 28px;
+        text-align: left;
+      }
+      .order-box-head {
+        background: var(--rust, #8b2500);
+        color: #f7edd8;
+        padding: 12px 20px;
+        font-family: "Cinzel", serif;
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+      }
+      .order-box-body {
+        padding: 20px;
+      }
+      .order-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(139, 37, 0, 0.08);
+        font-family: "Crimson Text", serif;
+        font-size: 1rem;
+      }
+      .order-row:last-child {
+        border-bottom: none;
+      }
+      .order-row span:first-child {
+        color: rgba(42, 14, 4, 0.55);
+      }
+      .order-row span:last-child {
+        color: #2a0e04;
+        font-weight: 600;
+      }
+      .order-items {
+        margin-top: 16px;
+      }
+      .order-item-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(139, 37, 0, 0.06);
+        font-family: "Crimson Text", serif;
+        font-size: 1rem;
+      }
+      .btn-home {
+        display: inline-block;
+        background: var(--rust, #8b2500);
+        color: #f7edd8;
+        padding: 14px 36px;
+        font-family: "Cinzel", serif;
+        font-size: 0.8rem;
+        letter-spacing: 2.5px;
+        border-radius: 4px;
+        text-decoration: none;
+        margin-right: 12px;
+        transition: background 0.2s;
+      }
+      .btn-home:hover {
+        background: #6b1c00;
+      }
+      .btn-outline {
+        display: inline-block;
+        border: 1.5px solid var(--rust, #8b2500);
+        color: var(--rust, #8b2500);
+        padding: 13px 28px;
+        font-family: "Cinzel", serif;
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+        border-radius: 4px;
+        text-decoration: none;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      .btn-outline:hover {
+        background: var(--rust, #8b2500);
+        color: #f7edd8;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      ✦ &nbsp; Thank you for shopping with Kullu Valley Handloom! &nbsp; ✦
+    </div>
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="header-main">
+        <div style="width: 130px"></div>
+        <a href="index.html" class="logo">
+          <svg class="logo-svg" viewBox="0 0 100 64" fill="none">
+            <polygon points="72,10 96,50 48,50" fill="#C4530A" opacity="0.65" />
+            <polygon points="24,20 50,52 -2,52" fill="#5C1A00" opacity="0.8" />
+            <polygon points="50,4 78,50 22,50" fill="#8B2500" />
+            <polygon points="50,4 59,22 41,22" fill="#F7EDD8" opacity="0.88" />
+            <circle cx="84" cy="16" r="5" fill="#C8900A" />
+            <circle cx="84" cy="16" r="2.5" fill="#E8B84B" />
+            <rect x="43" y="50" width="14" height="10" fill="#C8900A" rx="1" />
+            <polygon points="42,50 50,43 58,50" fill="#5C1A00" />
+          </svg>
+          <div class="logo-name">Kullu Valley</div>
+          <div class="logo-tag">&#9670; Handloom &#9670;</div>
+        </a>
+        <div style="width: 130px"></div>
+      </div>
+      <div
+        style="
+          height: 11px;
+          background: repeating-linear-gradient(
+            90deg,
+            #8b2500 0 8px,
+            #a83000 8px 16px,
+            #c4530a 16px 22px,
+            #c8900a 22px 28px,
+            #e8b84b 28px 32px,
+            #c8900a 32px 36px,
+            #c4530a 36px 42px,
+            #a83000 42px 50px,
+            #8b2500 50px 58px,
+            #1a4a1a 58px 66px,
+            #2d6b2d 66px 70px,
+            #1a4a1a 70px 78px
+          );
+        "
+      ></div>
+    </header>
+
+    <div class="success-page">
+      <div class="success-icon">✓</div>
+      <h1 class="success-title">Order Confirmed!</h1>
+      <p class="success-sub">
+        Your order has been placed successfully. Our artisans will carefully
+        pack your handloom treasure and dispatch it within 2 business days. 🏔️
+      </p>
+
+      <div class="order-box">
+        <div class="order-box-head">ORDER DETAILS</div>
+        <div class="order-box-body">
+          <div class="order-row">
+            <span>Order ID</span>
+            <span id="displayOrderId">—</span>
+          </div>
+          <div class="order-row">
+            <span>Status</span>
+            <span style="color: #2e7d32">✓ Paid</span>
+          </div>
+          <div class="order-row">
+            <span>Total</span>
+            <span id="displayTotal">—</span>
+          </div>
+          <div class="order-row">
+            <span>Delivery</span>
+            <span>5–7 Business Days</span>
+          </div>
+          <div class="order-items" id="orderItems"></div>
+        </div>
+      </div>
+
+      <div>
+        <a href="index.html" class="btn-home">Continue Shopping</a>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+      var API_BASE = "https://flick-declared-appease.ngrok-free.dev/api";
+
+      async function loadOrder() {
+        const params = new URLSearchParams(window.location.search);
+        const orderId = params.get("orderId");
+        if (!orderId) return;
+
+        document.getElementById("displayOrderId").textContent =
+          "#" + orderId.slice(-8).toUpperCase();
+
+        try {
+          const token = localStorage.getItem("kullu_token");
+          const res = await fetch(`${API_BASE}/orders/${orderId}`, {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          const data = await res.json();
+          if (!data.success) return;
+
+          const order = data.order;
+          document.getElementById("displayTotal").textContent =
+            "₹" + order.totalAmount.toLocaleString("en-IN");
+
+          const itemsEl = document.getElementById("orderItems");
+          itemsEl.innerHTML = `
+          <div style="font-family:'Lato',sans-serif;font-size:0.7rem;letter-spacing:1.5px;color:rgba(42,14,4,0.4);text-transform:uppercase;margin-bottom:8px;margin-top:12px;">Items</div>
+          ${order.items
+            .map(
+              (i) => `
+            <div class="order-item-row">
+              <span>${i.name} × ${i.qty}</span>
+              <span>₹${(i.price * i.qty).toLocaleString("en-IN")}</span>
+            </div>
+          `,
+            )
+            .join("")}
+        `;
+        } catch (err) {
+          console.error(err);
+        }
+      }
+
+      loadOrder();
+    </script>
+  </body>
+</html>
